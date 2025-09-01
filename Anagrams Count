@@ -1,0 +1,21 @@
+from collections import Counter
+from math import factorial
+
+MOD = 10**9 + 7
+
+class Solution:
+    def countAnagrams(self, s: str) -> int:
+        def modinv(x):
+            return pow(x, MOD - 2, MOD)
+
+        def word_permutations(word):
+            freq = Counter(word)
+            total = factorial(len(word)) % MOD
+            for count in freq.values():
+                total = (total * modinv(factorial(count))) % MOD
+            return total
+
+        result = 1
+        for word in s.split():
+            result = (result * word_permutations(word)) % MOD
+        return result
