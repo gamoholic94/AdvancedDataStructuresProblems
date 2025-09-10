@@ -1,0 +1,13 @@
+t = int(input())
+while t > 0:
+    n = int(input())
+    a = list(map(int, input().split()))
+    first = second = -1
+    for num in a:
+        if num > first:
+            second = first
+            first = num
+        elif num > second and num != first:
+            second = num
+    print(first + second)
+    t -= 1
