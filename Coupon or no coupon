@@ -1,0 +1,18 @@
+T = int(input())
+
+for _ in range(T):
+    N, X, Y = map(int, input().split())
+    A = list(map(int, input().split()))
+    
+    original_cost = sum(A)
+    discounted_cost = 0
+    for price in A:
+        discounted_cost += max(0, price - Y)
+    
+    total_with_coupon = discounted_cost + X
+    
+    if total_with_coupon < original_cost:
+        print("COUPON")
+    else:
+        print("NO COUPON")
+
