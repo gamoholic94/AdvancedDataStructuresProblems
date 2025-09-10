@@ -1,0 +1,15 @@
+t = int(input())
+
+while t > 0:
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    m = min(a)  # Initial minimum value
+    operations = 0
+    
+    for value in a:
+        if value > m:
+            operations += 1  # We need to change this value to m
+    
+    print(operations)
+    t -= 1
