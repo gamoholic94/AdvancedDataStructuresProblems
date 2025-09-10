@@ -1,0 +1,10 @@
+T = int(input())
+for _ in range(T):
+    N = int(input())
+    heights = list(map(int, input().split()))     
+    max_height = heights[0]
+    for h in heights:
+        if h > max_height:
+            max_height = h
+
+    print(max_height)
