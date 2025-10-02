@@ -1,0 +1,28 @@
+class Solution:
+    def topKFrequent(self, nums: list, k: int) -> list:
+        # Step 1: Count frequencies manually
+        freq = []
+        for num in nums:
+            found = False
+            for pair in freq:
+                if pair[0] == num:
+                    pair[1] += 1
+                    found = True
+                    break
+            if not found:
+                freq.append([num, 1])
+
+        # Step 2: Sort by frequency using selection sort
+        for i in range(len(freq)):
+            max_idx = i
+            for j in range(i + 1, len(freq)):
+                if freq[j][1] > freq[max_idx][1]:
+                    max_idx = j
+            freq[i], freq[max_idx] = freq[max_idx], freq[i]
+
+        # Step 3: Extract top k elements
+        result = []
+        for i in range(k):
+            result.append(freq[i][0])
+
+        return result
