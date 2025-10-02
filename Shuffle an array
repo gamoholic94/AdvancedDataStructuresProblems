@@ -1,0 +1,14 @@
+class Solution:
+    def __init__(self, nums: list):
+        self.original = nums[:]
+
+    def reset(self) -> list:
+        return self.original[:]
+
+    def shuffle(self) -> list:
+        arr = self.original[:]
+        n = len(arr)
+        for i in range(n - 1, 0, -1):
+            j = i % (i + 1)  # pseudo-random index without random lib
+            arr[i], arr[j] = arr[j], arr[i]
+        return arr
